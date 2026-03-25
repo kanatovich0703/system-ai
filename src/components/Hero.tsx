@@ -39,7 +39,7 @@ export function Hero({ onCtaClick }: HeroProps) {
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               Система, которая <br/>
-              <span className="text-zinc-600">не теряет</span> клиентов.
+              <span className="text-blue-500 font-bold">не теряет</span> клиентов.
             </motion.h1>
             
             <motion.p 
@@ -48,8 +48,8 @@ export function Hero({ onCtaClick }: HeroProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              Внедряем связку: Таргетированная реклама + AI-обработка + CRM. 
-              Автоматизируем рутину, повышаем конверсию, делаем бизнес прозрачным.
+              Внедряем связку: таргетированная реклама + AI-обработка + CRM, 
+              чтобы заявки не терялись и больше клиентов доходили до сделки.
             </motion.p>
             
             <motion.div 
@@ -59,11 +59,14 @@ export function Hero({ onCtaClick }: HeroProps) {
             >
               <button
                 onClick={onCtaClick}
-                className="bg-blue-600 text-white px-10 py-5 text-base font-medium hover:bg-blue-500 transition-all shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:shadow-[0_0_50px_rgba(37,99,235,0.6)] uppercase tracking-widest flex items-center gap-4"
+                className="bg-blue-600 text-white px-10 py-6 sm:px-12 sm:py-6 text-lg font-medium hover:bg-blue-500 transition-all shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:shadow-[0_0_60px_rgba(37,99,235,0.6)] hover:-translate-y-1 uppercase tracking-widest flex items-center gap-4 w-full sm:w-auto justify-center"
               >
-                Внедрить систему
-                <ArrowRight className="w-5 h-5" />
+                Разобрать свою ситуацию
+                <ArrowRight className="w-6 h-6" />
               </button>
+              <p className="mt-5 text-sm text-zinc-500 font-light text-center sm:text-left max-w-sm">
+                Покажу, где у вас сейчас теряются заявки и что можно улучшить
+              </p>
             </motion.div>
           </div>
 

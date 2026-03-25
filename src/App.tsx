@@ -3,7 +3,9 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Problem } from "./components/Problem";
 import { Solution } from "./components/Solution";
-import { ResultsAndCTA } from "./components/ResultsAndCTA";
+import { Results } from "./components/Results";
+import { Trust } from "./components/Trust";
+import { CtaSection } from "./components/CtaSection";
 import { Footer } from "./components/Footer";
 import { CtaModal } from "./components/CtaModal";
 
@@ -21,7 +23,9 @@ export default function App() {
         <Hero onCtaClick={openModal} />
         <Problem />
         <Solution />
-        <ResultsAndCTA onCtaClick={openModal} />
+        <Results />
+        <Trust />
+        <CtaSection onCtaClick={openModal} />
       </main>
 
       <Footer />
