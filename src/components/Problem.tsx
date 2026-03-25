@@ -1,63 +1,67 @@
 import { motion } from "motion/react";
+import { Clock, UserMinus, MessageSquareOff, ShieldAlert } from "lucide-react";
 
 const problems = [
   {
-    id: "ERR_01",
-    title: "Долгий ответ",
-    description: "Клиент написал — не ответили вовремя. Каждая минута ожидания снижает шанс на продажу.",
+    icon: Clock,
+    title: "Не ответили вовремя",
   },
   {
-    id: "ERR_02",
-    title: "Слив диалога",
-    description: "Нет скриптов, нет понимания, как закрывать возражения. Диалог обрывается.",
+    icon: UserMinus,
+    title: "Клиент задал вопрос и пропал",
   },
   {
-    id: "ERR_03",
-    title: "Потеря контакта",
-    description: "Менеджер забыл перезвонить или написать. Клиент остыл и ушел к конкурентам.",
+    icon: MessageSquareOff,
+    title: "Переписка потерялась",
   },
   {
-    id: "ERR_04",
-    title: "Слепая зона",
-    description: "Нет системы, где всё фиксируется. Вы не знаете реальную конверсию из заявки в оплату.",
+    icon: ShieldAlert,
+    title: "Нет контроля заявок",
   },
 ];
 
 export function Problem() {
   return (
-    <section className="bg-black py-24 lg:py-32">
+    <section className="bg-[#050505] py-24 lg:py-32 border-b border-white/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-16 lg:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div className="max-w-2xl">
-            <p className="text-zinc-500 text-xs font-mono tracking-[0.2em] uppercase mb-4">Анализ потерь</p>
-            <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">
-              Где бизнес теряет деньги
-            </h2>
-          </div>
-          <p className="text-zinc-400 font-light max-w-sm text-sm">
-            Отсутствие системы на этапе обработки заявок приводит к потере до 60% потенциальной выручки.
-          </p>
+        <div className="mb-16 lg:mb-24 text-center">
+          <h2 className="text-4xl sm:text-5xl font-medium tracking-tight text-white">
+            Где бизнес теряет клиентов
+          </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {problems.map((problem, index) => (
-            <motion.div 
-              key={problem.id} 
-              className="bg-[#0a0a0a] border border-white/5 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-white/10 hover:shadow-[0_15px_40px_rgba(0,0,0,0.7)] transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <div className="flex items-center justify-between mb-8">
-                <div className="w-2 h-2 rounded-full bg-red-500/50 shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>
-                <span className="text-zinc-600 font-mono text-xs">{problem.id}</span>
-              </div>
-              <h3 className="text-lg font-medium text-white mb-3 leading-snug">{problem.title}</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed font-light">{problem.description}</p>
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {problems.map((problem, index) => {
+            const Icon = problem.icon;
+            return (
+              <motion.div 
+                key={index} 
+                className="bg-[#0a0a0a] border border-white/5 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:border-white/10 hover:shadow-[0_15px_40px_rgba(0,0,0,0.5)] transition-all duration-300 flex flex-col items-center text-center group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="w-14 h-14 bg-black border border-white/10 flex items-center justify-center mb-6 group-hover:border-red-500/30 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] transition-all">
+                  <Icon className="w-6 h-6 text-zinc-500 group-hover:text-red-400 transition-colors" />
+                </div>
+                <h3 className="text-lg font-medium text-white leading-snug">{problem.title}</h3>
+              </motion.div>
+            );
+          })}
         </div>
+
+        <motion.div 
+          className="max-w-3xl mx-auto text-center bg-red-500/5 border border-red-500/10 p-8 sm:p-10 shadow-[0_10px_40px_rgba(239,68,68,0.05)]"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <p className="text-xl sm:text-2xl font-medium text-white tracking-tight">
+            В итоге часть клиентов просто <span className="text-red-400">не доходит до сделки</span>
+          </p>
+        </motion.div>
       </div>
     </section>
   );
