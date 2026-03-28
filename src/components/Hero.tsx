@@ -73,7 +73,7 @@ export function Hero({ onCtaClick }: HeroProps) {
             >
               <button
                 onClick={onCtaClick}
-                className="bg-blue-600 text-white px-10 py-6 sm:px-12 sm:py-6 text-lg font-medium hover:bg-blue-500 transition-all shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:shadow-[0_0_60px_rgba(37,99,235,0.6)] hover:-translate-y-1 uppercase tracking-widest flex items-center gap-4 w-full sm:w-auto justify-center"
+                className="bg-blue-600 text-white px-10 py-6 sm:px-12 sm:py-6 text-lg font-medium lg:hover:bg-blue-500 active:bg-blue-700 transition-all shadow-[0_0_40px_rgba(37,99,235,0.4)] lg:hover:shadow-[0_0_60px_rgba(37,99,235,0.6)] active:shadow-[0_0_20px_rgba(37,99,235,0.4)] lg:hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] uppercase tracking-widest flex items-center gap-4 w-full sm:w-auto justify-center"
               >
                 Связаться и обсудить проект
                 <ArrowRight className="w-6 h-6" />
@@ -124,10 +124,10 @@ export function Hero({ onCtaClick }: HeroProps) {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                     >
-                      <div className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center shrink-0 group-hover:border-blue-500/50 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all bg-[#0a0a0a]">
-                        <Icon className="w-4 h-4 text-zinc-400 group-hover:text-blue-400 transition-colors" />
+                      <div className="w-10 h-10 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center shrink-0 lg:group-hover:border-blue-500/50 lg:group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] group-active:border-blue-500/50 group-active:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all">
+                        <Icon className="w-4 h-4 text-zinc-400 lg:group-hover:text-blue-400 group-active:text-blue-400 transition-colors" />
                       </div>
-                      <div className="text-sm font-medium text-zinc-300 group-hover:text-white transition-colors flex items-center gap-2 flex-wrap">
+                      <div className="text-sm font-medium text-zinc-300 lg:group-hover:text-white group-active:text-white transition-colors flex items-center gap-2 flex-wrap">
                         {step.labelLogos && (
                           <div className="flex items-center gap-1.5">
                             {step.labelLogos.map((logo, idx) => {

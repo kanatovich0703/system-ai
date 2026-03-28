@@ -56,7 +56,7 @@ export function CtaModal({ isOpen, onClose }: CtaModalProps) {
             <div className="relative overflow-hidden bg-[#0a0a0a] border border-white/10 shadow-2xl">
               <button
                 onClick={onClose}
-                className="absolute right-4 top-4 z-10 p-2 text-zinc-500 hover:text-white transition-colors"
+                className="absolute right-4 top-4 z-10 p-2 text-zinc-500 lg:hover:text-white active:text-white transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -113,14 +113,14 @@ export function CtaModal({ isOpen, onClose }: CtaModalProps) {
                         value={businessType}
                         onChange={(e) => setBusinessType(e.target.value)}
                         className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:border-blue-500 focus:outline-none transition-colors font-light"
-                        placeholder="Например: салон красоты, онлайн-школа"
+                        placeholder="Например: ремонт квартир, юридические услуги, консультации"
                         required
                       />
                     </div>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-blue-600 text-white px-8 py-4 text-sm font-medium hover:bg-blue-500 transition-colors uppercase tracking-widest disabled:opacity-70 flex justify-center items-center gap-3 mt-4 shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                      className="w-full bg-blue-600 text-white px-8 py-4 text-sm font-medium lg:hover:bg-blue-500 active:bg-blue-700 transition-all uppercase tracking-widest disabled:opacity-70 flex justify-center items-center gap-3 mt-4 shadow-[0_0_20px_rgba(37,99,235,0.3)] active:scale-[0.98]"
                     >
                       {isSubmitting ? (
                         <>

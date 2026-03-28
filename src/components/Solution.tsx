@@ -57,7 +57,7 @@ export function Solution() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <div className="w-24 h-24 bg-[#050505] border border-white/10 flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] mb-8 relative z-10 group-hover:border-blue-500/50 group-hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-all duration-300">
+                  <div className="w-24 h-24 bg-[#050505] border border-white/10 flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] mb-8 relative z-10 lg:group-hover:border-blue-500/50 lg:group-hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] group-active:border-blue-500/50 group-active:shadow-[0_0_40px_rgba(59,130,246,0.3)] group-active:scale-95 transition-all duration-300 animate-breathe lg:animate-none">
                     <Icon className="w-10 h-10 text-blue-500" />
                     <div className="absolute -top-3 -left-3 w-8 h-8 bg-black border border-white/10 flex items-center justify-center text-[10px] font-mono text-zinc-500">
                       {step.id}
@@ -69,7 +69,7 @@ export function Solution() {
 
                   {/* Arrow connecting cards (Desktop only) */}
                   {index !== pipeline.length - 1 && (
-                    <div className="hidden lg:block absolute top-12 -right-8 z-0 -translate-y-1/2 text-white/10 group-hover:text-blue-500/30 transition-colors duration-300">
+                    <div className="hidden lg:block absolute top-12 -right-8 z-0 -translate-y-1/2 text-white/10 lg:group-hover:text-blue-500/30 transition-colors duration-300">
                       <ArrowRight className="w-8 h-8" />
                     </div>
                   )}

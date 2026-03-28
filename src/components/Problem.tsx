@@ -36,16 +36,16 @@ export function Problem() {
             return (
               <motion.div 
                 key={index} 
-                className="bg-[#0a0a0a] border border-white/5 p-10 lg:p-12 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:bg-[#111111] hover:border-white/10 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] transition-all duration-300 flex flex-col items-center text-center group"
+                className="bg-[#0a0a0a] border border-white/5 p-10 lg:p-12 shadow-[0_10px_30px_rgba(0,0,0,0.5)] lg:hover:bg-[#111111] lg:hover:border-white/10 lg:hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] active:bg-[#111111] active:scale-[0.98] transition-all duration-300 flex flex-col items-center text-center group animate-breathe lg:animate-none"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="w-16 h-16 bg-black border border-white/10 flex items-center justify-center mb-8 group-hover:border-red-500/40 group-hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] transition-all duration-300">
-                  <Icon className="w-7 h-7 text-zinc-500 group-hover:text-red-400 transition-colors duration-300" />
+                <div className="w-16 h-16 bg-black border border-white/10 flex items-center justify-center mb-8 lg:group-hover:border-red-500/40 lg:group-hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] group-active:border-red-500/40 group-active:shadow-[0_0_30px_rgba(239,68,68,0.2)] transition-all duration-300">
+                  <Icon className="w-7 h-7 text-zinc-500 lg:group-hover:text-red-400 group-active:text-red-400 transition-colors duration-300" />
                 </div>
-                <h3 className="text-xl font-medium text-white leading-snug group-hover:text-red-50 transition-colors duration-300">{problem.title}</h3>
+                <h3 className="text-xl font-medium text-white leading-snug lg:group-hover:text-red-50 group-active:text-red-50 transition-colors duration-300">{problem.title}</h3>
               </motion.div>
             );
           })}

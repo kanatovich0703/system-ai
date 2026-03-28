@@ -40,13 +40,13 @@ export function Results() {
             return (
               <motion.div 
                 key={index}
-                className="bg-[#0a0a0a] border border-white/5 p-10 lg:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:border-white/10 hover:shadow-[0_30px_60px_rgba(0,0,0,0.7)] transition-all duration-300 flex flex-col sm:flex-row gap-8 items-start group"
+                className="bg-[#0a0a0a] border border-white/5 p-10 lg:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.5)] lg:hover:border-white/10 lg:hover:shadow-[0_30px_60px_rgba(0,0,0,0.7)] active:scale-[0.98] active:bg-[#111111] transition-all duration-300 flex flex-col sm:flex-row gap-8 items-start group animate-breathe lg:animate-none"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="w-16 h-16 bg-[#111111] border border-white/10 flex items-center justify-center shrink-0 group-hover:border-blue-500/30 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300">
+                <div className="w-16 h-16 bg-[#111111] border border-white/10 flex items-center justify-center shrink-0 lg:group-hover:border-blue-500/30 lg:group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-active:border-blue-500/30 group-active:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300">
                   <Icon className="w-8 h-8 text-blue-500" />
                 </div>
                 <div>
