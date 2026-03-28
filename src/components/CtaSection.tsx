@@ -7,7 +7,7 @@ interface CtaSectionProps {
 
 export function CtaSection({ onCtaClick }: CtaSectionProps) {
   return (
-    <section className="bg-[#020617] py-32 lg:py-48 border-t border-blue-900/30 relative overflow-hidden">
+    <section className="bg-[#020617] py-20 lg:py-48 border-t border-blue-900/30 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
       
@@ -30,7 +30,7 @@ export function CtaSection({ onCtaClick }: CtaSectionProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Разберём, где у вас сейчас теряются заявки и какую систему можно внедрить под ваш бизнес
+          Разберём, где у вас теряются заявки и как выстроить систему, которая будет привлекать и обрабатывать клиентов без потерь
         </motion.p>
         
         <motion.div
@@ -43,7 +43,7 @@ export function CtaSection({ onCtaClick }: CtaSectionProps) {
             onClick={onCtaClick}
             className="bg-blue-600 text-white px-12 py-6 sm:px-16 sm:py-8 text-lg sm:text-xl font-medium hover:bg-blue-500 transition-all shadow-[0_0_50px_rgba(37,99,235,0.5)] hover:shadow-[0_0_80px_rgba(37,99,235,0.7)] hover:-translate-y-1 uppercase tracking-widest flex items-center gap-4 mx-auto"
           >
-            Разобрать свою ситуацию
+            Связаться и обсудить проект
             <ArrowRight className="w-6 h-6" />
           </button>
         </motion.div>

@@ -1,16 +1,16 @@
 import { motion } from "motion/react";
-import { Briefcase, GraduationCap, Scissors, Store } from "lucide-react";
+import { Briefcase, GraduationCap, Users, Store } from "lucide-react";
 
 const businesses = [
-  { name: "Услуги", icon: Briefcase },
-  { name: "Онлайн-школы", icon: GraduationCap },
-  { name: "Салоны", icon: Scissors },
-  { name: "Локальный бизнес", icon: Store },
+  { name: "Малый бизнес с входящими заявками", icon: Briefcase },
+  { name: "Сервисные компании", icon: Store },
+  { name: "Консультационные услуги", icon: Users },
+  { name: "Онлайн-школы и эксперты", icon: GraduationCap },
 ];
 
 export function Trust() {
   return (
-    <section className="bg-[#050505] py-24 lg:py-32 border-b border-white/5">
+    <section className="bg-[#050505] py-16 lg:py-32 border-b border-white/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <motion.h2 
           className="text-2xl sm:text-3xl font-medium text-zinc-400 mb-16 tracking-tight"

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Target, MessageCircle, Cpu, Database, TrendingUp, ArrowRight } from "lucide-react";
+import { Target, MessageCircle, Cpu, Database, Phone, ArrowRight } from "lucide-react";
 
 const pipeline = [
   {
@@ -28,15 +28,15 @@ const pipeline = [
   },
   {
     id: "05",
-    title: "Больше клиентов доходят до сделки",
-    sub: "рост выручки",
-    icon: TrendingUp,
+    title: "Менеджер связывается с клиентом",
+    sub: "закрытие на сделку",
+    icon: Phone,
   },
 ];
 
 export function Solution() {
   return (
-    <section className="bg-[#0a0a0a] py-24 lg:py-40 border-b border-white/5 overflow-hidden">
+    <section className="bg-[#0a0a0a] py-16 lg:py-40 border-b border-white/5 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-24 text-center max-w-3xl mx-auto">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-6">

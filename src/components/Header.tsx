@@ -27,7 +27,7 @@ export function Header({ onCtaClick }: HeaderProps) {
           <div className="flex h-8 w-8 items-center justify-center bg-white text-black">
             <Layers className="h-5 w-5" />
           </div>
-          <span className="text-lg font-medium text-white tracking-wide uppercase">SystemPro</span>
+          <span className="text-lg font-medium text-white tracking-wide uppercase">Erbol|Automation Systems</span>
         </div>
         
         <div className="flex items-center gap-4">

@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Loader2, Sparkles } from "lucide-react";
-import { GoogleGenAI, ThinkingLevel } from "@google/genai";
-import Markdown from "react-markdown";
+import { X, Loader2, MessageSquare } from "lucide-react";
 
 interface CtaModalProps {
   isOpen: boolean;
@@ -10,49 +8,32 @@ interface CtaModalProps {
 }
 
 export function CtaModal({ isOpen, onClose }: CtaModalProps) {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [businessType, setBusinessType] = useState("");
-  const [problem, setProblem] = useState("");
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [analysisResult, setAnalysisResult] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleAnalyze = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!businessType || !problem) return;
+    if (!name || !phone || !businessType) return;
 
-    setIsAnalyzing(true);
-    setAnalysisResult(null);
+    setIsSubmitting(true);
 
-    try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-      const prompt = `
-        Ты эксперт по внедрению систем привлечения и обработки клиентов (лидогенерация, CRM, скрипты продаж).
-        Клиент хочет разобрать свою ситуацию.
-        Ниша бизнеса: ${businessType}
-        Текущая проблема: ${problem}
-        
-        Проанализируй ситуацию и дай краткий, структурированный ответ (3-4 абзаца):
-        1. В чем вероятная причина потери клиентов (где просадка).
-        2. Что нужно внедрить в первую очередь (CRM, бот, скрипты, регламенты).
-        3. Призыв к действию (записаться на полноценную консультацию).
-        
-        Пиши профессионально, уверенно, но без воды. Используй форматирование Markdown.
-      `;
-
-      const response = await ai.models.generateContent({
-        model: "gemini-3.1-pro-preview",
-        contents: prompt,
-        config: {
-          thinkingConfig: { thinkingLevel: ThinkingLevel.HIGH },
-        },
-      });
-
-      setAnalysisResult(response.text);
-    } catch (error) {
-      console.error("Error analyzing:", error);
-      setAnalysisResult("Произошла ошибка при анализе. Пожалуйста, попробуйте позже или свяжитесь со мной напрямую.");
-    } finally {
-      setIsAnalyzing(false);
-    }
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      
+      // Reset form after a few seconds and close
+      setTimeout(() => {
+        setIsSuccess(false);
+        setName("");
+        setPhone("");
+        setBusinessType("");
+        onClose();
+      }, 3000);
+    }, 1500);
   };
 
   return (
@@ -80,70 +61,88 @@ export function CtaModal({ isOpen, onClose }: CtaModalProps) {
                 <X className="h-5 w-5" />
               </button>
 
-              <div className="p-8 sm:p-10 max-h-[80vh] overflow-y-auto">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="flex h-10 w-10 items-center justify-center bg-indigo-500/10 text-indigo-500">
-                    <Sparkles className="h-5 w-5" />
+              <div className="p-8 sm:p-10 max-h-[90vh] overflow-y-auto">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex h-10 w-10 items-center justify-center bg-blue-500/10 text-blue-500">
+                    <MessageSquare className="h-5 w-5" />
                   </div>
-                  <h3 className="text-xl font-medium text-white tracking-tight">AI-Разбор ситуации</h3>
+                  <h3 className="text-xl font-medium text-white tracking-tight">Обсудим ваш проект</h3>
                 </div>
+                
+                <p className="text-sm text-zinc-400 font-light mb-8 leading-relaxed">
+                  Оставьте контакты — свяжусь с вами и подскажу, как выстроить систему заявок под ваш бизнес
+                </p>
 
-                {!analysisResult ? (
-                  <form onSubmit={handleAnalyze} className="space-y-6">
+                {!isSuccess ? (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div>
+                      <label htmlFor="name" className="block text-xs font-medium text-zinc-400 mb-2 uppercase tracking-widest">
+                        Имя
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:border-blue-500 focus:outline-none transition-colors font-light"
+                        placeholder="Как к вам обращаться?"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="block text-xs font-medium text-zinc-400 mb-2 uppercase tracking-widest">
+                        Телефон / WhatsApp
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:border-blue-500 focus:outline-none transition-colors font-light"
+                        placeholder="+7 (___) ___-__-__"
+                        required
+                      />
+                    </div>
                     <div>
                       <label htmlFor="business" className="block text-xs font-medium text-zinc-400 mb-2 uppercase tracking-widest">
-                        Ниша бизнеса
+                        Вид бизнеса
                       </label>
                       <input
                         type="text"
                         id="business"
                         value={businessType}
                         onChange={(e) => setBusinessType(e.target.value)}
-                        className="w-full bg-[#050505] border border-white/10 px-4 py-4 text-white focus:border-indigo-500 focus:outline-none transition-colors font-light"
+                        className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-white focus:border-blue-500 focus:outline-none transition-colors font-light"
                         placeholder="Например: салон красоты, онлайн-школа"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="problem" className="block text-xs font-medium text-zinc-400 mb-2 uppercase tracking-widest">
-                        Главная проблема
-                      </label>
-                      <textarea
-                        id="problem"
-                        value={problem}
-                        onChange={(e) => setProblem(e.target.value)}
-                        rows={3}
-                        className="w-full bg-[#050505] border border-white/10 px-4 py-4 text-white focus:border-indigo-500 focus:outline-none transition-colors resize-none font-light"
-                        placeholder="Например: заявки идут, но менеджеры не успевают отвечать"
                         required
                       />
                     </div>
                     <button
                       type="submit"
-                      disabled={isAnalyzing}
-                      className="w-full bg-white text-black px-8 py-5 text-sm font-medium hover:bg-zinc-200 transition-colors uppercase tracking-widest disabled:opacity-70 flex justify-center items-center gap-3 mt-4"
+                      disabled={isSubmitting}
+                      className="w-full bg-blue-600 text-white px-8 py-4 text-sm font-medium hover:bg-blue-500 transition-colors uppercase tracking-widest disabled:opacity-70 flex justify-center items-center gap-3 mt-4 shadow-[0_0_20px_rgba(37,99,235,0.3)]"
                     >
-                      {isAnalyzing ? (
+                      {isSubmitting ? (
                         <>
                           <Loader2 className="h-5 w-5 animate-spin" />
-                          Анализируем...
+                          Отправка...
                         </>
                       ) : (
-                        "Получить разбор"
+                        "Связаться со мной"
                       )}
                     </button>
                   </form>
                 ) : (
-                  <div className="space-y-8">
-                    <div className="prose prose-sm prose-invert max-w-none text-zinc-400 font-light leading-relaxed">
-                      <Markdown>{analysisResult}</Markdown>
+                  <div className="py-12 text-center space-y-4">
+                    <div className="w-16 h-16 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
-                    <button
-                      onClick={onClose}
-                      className="w-full bg-white text-black px-8 py-5 text-sm font-medium hover:bg-zinc-200 transition-colors uppercase tracking-widest text-center"
-                    >
-                      Записаться на внедрение
-                    </button>
+                    <h4 className="text-xl font-medium text-white">Заявка отправлена</h4>
+                    <p className="text-zinc-400 font-light">
+                      Я свяжусь с вами в ближайшее время для обсуждения проекта.
+                    </p>
                   </div>
                 )}
               </div>
