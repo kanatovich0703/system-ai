@@ -40,7 +40,12 @@ export function CtaSection({ onCtaClick }: CtaSectionProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <button
-            onClick={onCtaClick}
+            onClick={() => {
+              if (typeof (window as any).fbq === 'function') {
+                (window as any).fbq('trackCustom', 'ClickDiscussProject');
+              }
+              onCtaClick();
+            }}
             className="bg-blue-600 text-white px-12 py-6 sm:px-16 sm:py-8 text-lg sm:text-xl font-medium lg:hover:bg-blue-500 active:bg-blue-700 transition-all shadow-[0_0_50px_rgba(37,99,235,0.5)] lg:hover:shadow-[0_0_80px_rgba(37,99,235,0.7)] active:shadow-[0_0_30px_rgba(37,99,235,0.5)] lg:hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] uppercase tracking-widest flex items-center gap-4 mx-auto"
           >
             Связаться и обсудить проект

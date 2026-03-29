@@ -20,6 +20,10 @@ export function CtaModal({ isOpen, onClose }: CtaModalProps) {
 
     setIsSubmitting(true);
 
+    if (typeof (window as any).fbq === 'function') {
+      (window as any).fbq('track', 'Lead');
+    }
+
     const botToken = "6119735738:AAEKMSv8RPpTa-qNpsxzglAxo1hFMQoL2F4";
     // Replace this with your actual chat ID or get it dynamically if needed
     // For now, you'll need to find out your chat ID and put it here

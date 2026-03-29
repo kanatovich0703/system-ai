@@ -72,7 +72,12 @@ export function Hero({ onCtaClick }: HeroProps) {
               transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
               <button
-                onClick={onCtaClick}
+                onClick={() => {
+                  if (typeof (window as any).fbq === 'function') {
+                    (window as any).fbq('trackCustom', 'ClickDiscussProject');
+                  }
+                  onCtaClick();
+                }}
                 className="bg-blue-600 text-white px-10 py-6 sm:px-12 sm:py-6 text-lg font-medium lg:hover:bg-blue-500 active:bg-blue-700 transition-all shadow-[0_0_40px_rgba(37,99,235,0.4)] lg:hover:shadow-[0_0_60px_rgba(37,99,235,0.6)] active:shadow-[0_0_20px_rgba(37,99,235,0.4)] lg:hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] uppercase tracking-widest flex items-center gap-4 w-full sm:w-auto justify-center"
               >
                 Связаться и обсудить проект

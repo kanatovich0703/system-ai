@@ -32,7 +32,12 @@ export function Header({ onCtaClick }: HeaderProps) {
         
         <div className="flex items-center shrink-0">
           <button
-            onClick={onCtaClick}
+            onClick={() => {
+              if (typeof (window as any).fbq === 'function') {
+                (window as any).fbq('trackCustom', 'ClickContact');
+              }
+              onCtaClick();
+            }}
             className="text-[10px] sm:text-xs font-medium text-blue-400 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 sm:px-5 sm:py-2 lg:hover:bg-blue-500/20 lg:hover:border-blue-500/40 lg:hover:text-blue-300 lg:hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] active:scale-95 active:bg-blue-500/30 transition-all duration-300 uppercase tracking-widest shrink-0"
           >
             Связаться
