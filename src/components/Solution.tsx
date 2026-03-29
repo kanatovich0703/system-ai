@@ -36,7 +36,7 @@ const pipeline = [
 
 export function Solution() {
   return (
-    <section className="bg-[#0a0a0a] py-16 lg:py-40 border-b border-white/5 overflow-hidden">
+    <section className="bg-transparent py-16 lg:py-40 border-b border-white/5 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-24 text-center max-w-3xl mx-auto">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-6">

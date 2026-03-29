@@ -40,9 +40,9 @@ export function Hero({ onCtaClick }: HeroProps) {
   ];
 
   return (
-    <section className="relative pt-24 pb-16 lg:pt-48 lg:pb-40 bg-black overflow-hidden border-b border-white/5">
+    <section className="relative pt-24 pb-16 lg:pt-48 lg:pb-40 bg-transparent overflow-hidden border-b border-white/5">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center lg:items-start">
           
           {/* Left Side: Text & CTA */}
           <div className="max-w-2xl">
@@ -91,7 +91,7 @@ export function Hero({ onCtaClick }: HeroProps) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative z-10 bg-[#050505] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] p-8 rounded-sm">
+            <div className="relative z-10 bg-[#050505] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] p-8 rounded-sm lg:scale-[1.15] xl:scale-[1.25] lg:origin-top lg:mt-2">
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:1rem_1rem] pointer-events-none" />
               
               <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-8 relative z-10">

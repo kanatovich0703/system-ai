@@ -26,7 +26,7 @@ const results = [
 
 export function Results() {
   return (
-    <section className="bg-black py-16 lg:py-40 border-b border-white/5">
+    <section className="bg-transparent py-16 lg:py-40 border-b border-white/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-20 lg:mb-28 text-center">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white">

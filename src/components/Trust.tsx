@@ -11,17 +11,19 @@ const businesses = [
 
 export function Trust() {
   return (
-    <section className="bg-[#050505] py-16 lg:py-32 border-b border-white/5">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        <motion.h2 
-          className="text-2xl sm:text-3xl font-medium text-zinc-400 mb-16 tracking-tight"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          С какими бизнесами работаю
-        </motion.h2>
+    <section className="bg-transparent py-16 lg:py-32 border-b border-white/5">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mb-20 lg:mb-28 text-center">
+          <motion.h2 
+            className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            С какими бизнесами работаю
+          </motion.h2>
+        </div>
         
         <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
           {businesses.map((biz, index) => {

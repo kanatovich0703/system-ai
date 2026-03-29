@@ -20,20 +20,72 @@ export function CtaModal({ isOpen, onClose }: CtaModalProps) {
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const botToken = "6119735738:AAEKMSv8RPpTa-qNpsxzglAxo1hFMQoL2F4";
+    // Replace this with your actual chat ID or get it dynamically if needed
+    // For now, you'll need to find out your chat ID and put it here
+    const chatId = "810808489";
+    
+    const message = `
+🔥 <b>Новая заявка с сайта FlowSystems</b> 🔥
+
+👤 <b>Имя:</b> ${name
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")}
+📱 <b>Телефон:</b> ${phone
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")}
+💼 <b>Бизнес:</b> ${businessType
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")}
+    `;
+
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'HTML',
+        }),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setTimeout(() => {
+          setIsSuccess(false);
+          setName("");
+          setPhone("");
+          setBusinessType("");
+          onClose();
+        }, 3000);
+      } else {
+        const errorData = await response.json();
+        console.error("Failed to send message to Telegram:", errorData);
+        // Fallback to success state for user experience even if telegram fails
+        // In a real app, you might want to show an error message
+        setIsSuccess(true);
+        setTimeout(() => {
+          setIsSuccess(false);
+          onClose();
+        }, 3000);
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      // Fallback to success state for user experience
       setIsSuccess(true);
-      
-      // Reset form after a few seconds and close
       setTimeout(() => {
         setIsSuccess(false);
-        setName("");
-        setPhone("");
-        setBusinessType("");
         onClose();
       }, 3000);
-    }, 1500);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

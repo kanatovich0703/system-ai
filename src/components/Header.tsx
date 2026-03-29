@@ -19,7 +19,7 @@ export function Header({ onCtaClick }: HeaderProps) {
   return (
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 border-b border-white/5 ${
-        scrolled ? "bg-[#050505]/95 backdrop-blur-md py-4" : "bg-[#050505] py-6"
+        scrolled ? "bg-[#03040B]/80 backdrop-blur-md py-4" : "bg-transparent py-6"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
